@@ -8,6 +8,7 @@ SPOTIFY_CLIENT_ID = "client id here"
 SPOTIFY_CLIENT_SECRET = "secret here"
 
 
+# Retrieve access token from spotify web api
 def get_spotify_access_token(client_id, client_secret):
     """Retrieve an access token from Spotify API."""
     auth_url = "https://accounts.spotify.com/api/token"
@@ -24,6 +25,7 @@ def get_spotify_access_token(client_id, client_secret):
         raise Exception("Failed to get Spotify access token: " + response.text)
 
 
+# iterate over artists given
 def read_artists_from_csv(file_path):
     """Read artist names from a CSV file."""
     artists = []
@@ -34,7 +36,7 @@ def read_artists_from_csv(file_path):
                 artists.append(row[0])  # Assuming the artist names are in the first column
     return artists
 
-
+# check for an individual artist on spotify
 def check_artist_on_spotify(artist_name, access_token):
     """Check if an artist exists on Spotify."""
     search_url = "https://api.spotify.com/v1/search"
@@ -67,7 +69,7 @@ def check_artist_on_spotify(artist_name, access_token):
 
     return result
 
-
+# process list of artists against spotify
 def process_csv(input_file, output_file, access_token, threshold=40):
     """Read data from a CSV file, process it, and write updated data to a new CSV file."""
     updated_rows = []
@@ -183,6 +185,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-    # Get Spotify access token
+
+    # this is for querying for an individual artist
     # access_token = get_spotify_access_token(SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET)
     # query_artist_on_spotify("es real poniendo alabanza en los labios", access_token)
