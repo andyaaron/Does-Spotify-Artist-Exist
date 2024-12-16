@@ -29,7 +29,7 @@ def read_artists_from_csv(file_path):
     artists = []
     with open(file_path, "r", encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile)
-        for row in reader:
+        for row in reader:git p
             if row:  # Make sure the row is not empty
                 artists.append(row[0])  # Assuming the artist names are in the first column
     return artists
